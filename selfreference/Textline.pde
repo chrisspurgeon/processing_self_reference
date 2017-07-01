@@ -18,9 +18,8 @@ class Textline {
   
   void update() {
     if (millis() >= theStartTime) {
-      if (currentPosition <= stringLength) {
-        println("Time to print " + theString);
-        text(theString.substring(0,currentPosition), x, y);
+      text(theString.substring(0,currentPosition), x, y);
+      if (currentPosition < stringLength) {
         currentPosition++;
         delay(delayTime);
       }
@@ -32,10 +31,23 @@ class Textline {
   void ping() {
     println("Hello from a ping object! The string is " + theString);
   }
-  int getCurrentPosition() {
+  int getCurrentXPosition() {
     return x;
   }
-  void setCurrentPosition(int newX) {
+  void setCurrentXPosition(int newX) {
     x = newX;
+  }
+  int getCurrentYPosition() {
+    return y;
+  }
+  void setCurrentYPosition(int newY) {
+    y = newY;
+  }
+  void updateText(String theNewText) {
+    theString = theNewText;
+    stringLength = theString.length();
+  }
+  void setCurrentPosition(int x) {
+    currentPosition = x;
   }
 }
